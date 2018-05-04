@@ -15,22 +15,21 @@ class App extends Component {
   }
 
   renderValue = (value, i, j) => {
-
+    
     let key = `cell ${i}-${j}`;
     let val = '';
     if (value === 1){
-     val ='X';
+     val =(<span style={{color: 'green'}}>X</span>);
     }
     if (value ===2) {
-      val = 'O';
+      val = (<span style={{color: 'red'}}>O</span>);
     }
     return <td onClick={() => this.handleClick(i,j)} key={key}>{val}</td>
-
-
   }
 
   handleClick = (row,col) => {
     let {x_flag,arr} = this.state;
+    if(arr[row][col] !== 0) {return}
     arr[row][col] = x_flag ? 1 : 2;
     this.setState({
       x_flag: !x_flag,
@@ -42,19 +41,13 @@ class App extends Component {
   renderMatrix(){
     let {arr} = this.state;
     let _this = this;
-
     return arr.map((subarr, i) => {
-      let rendertd = function(arr, j){
-        return arr.map((val) =>{return _this.renderValue(val, i, j)})
+      let rendertd = function(arr){
+        return arr.map((val, j) =>{return _this.renderValue(val, i, j)})
       };
       return (<tr key={`row ${i}`} > {rendertd(subarr)}</tr>)
     })
-
-
   }
-
-
-
 
 
   render() {
