@@ -30,9 +30,12 @@
 td {
   width: 100px !important;
   position: relative;
-  top: 100px;
-  height: 250px !important;
-  /*background-color: darkgrey;*/
+  /*top: 100px;*/
+  height: 100px !important;
   font-size: 50px;
   text-align: center;
+}
+
+.btn {
+  margin: 20px 20px;
 }
